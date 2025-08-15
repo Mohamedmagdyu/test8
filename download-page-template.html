@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روابط التحميل - محمد مجدي</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="video-page.css">
+    <style>
+        .download-container {
+            max-width: 800px;
+            margin: 5rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        .download-container h1 {
+            color: #FFD700;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .download-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .download-item {
+            background: rgba(255, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+        .download-item:hover {
+            background: rgba(255, 0, 0, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
+        }
+        .download-item .icon {
+            font-size: 3rem;
+            color: #FFD700;
+            flex-shrink: 0;
+        }
+        .download-item .info {
+            text-align: right;
+            flex-grow: 1;
+        }
+        .download-item .info h3 {
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .download-item .info p {
+            color: #e0e0e0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .download-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, #00FF00, #00AA00);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .download-button:hover {
+            background: linear-gradient(45deg, #00AA00, #007700);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 0, 0.4);
+        }
+        .download-button::before {
+            content: ‘↓’; /* Unicode for download arrow */
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .download-button:hover::before {
+            opacity: 1;
+            left: 5px;
+        }
+        .download-button span {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .download-button:hover span {
+            transform: translateX(15px);
+        }
+        @keyframes pixelGlow {
+            0% {
+                text-shadow: 
+                    2px 2px 0px #ff0000,
+                    4px 4px 0px #00ff00,
+                    6px 6px 0px #0000ff,
+                    8px 8px 0px rgba(255, 255, 0, 0.8),
+                    10px 10px 0px rgba(255, 0, 255, 0.6),
+                    12px 12px 0px rgba(0, 255, 255, 0.4);
+            }
+            50% {
+                text-shadow: 
+                    2px 2px 0px #00ff00,
+                    4px 4px 0px #0000ff,
+                    6px 6px 0px #ff0000,
+                    8px 8px 0px rgba(0, 255, 255, 0.8),
+                    10px 10px 0px rgba(255, 255, 0, 0.6),
+                    12px 12px 0px rgba(255, 0, 255, 0.4);
+            }
+            100% {
+                text-shadow: 
+                    2px 2px 0px #0000ff,
+                    4px 4px 0px #ff0000,
+                    6px 6px 0px #00ff00,
+                    8px 8px 0px rgba(255, 0, 255, 0.8),
+                    10px 10px 0px rgba(0, 255, 255, 0.6),
+                    12px 12px 0px rgba(255, 255, 0, 0.4);
+            }
+        }
+        @media (max-width: 768px) {
+            .download-container {
+                margin: 2rem auto;
+                padding: 1.5rem;
+            }
+            .download-container h1 {
+                font-size: 2rem;
+            }
+            .download-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            .download-item .info {
+                text-align: center;
+            }
+            .download-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- خلفية النجوم المتحركة -->
+    <div class="stars-background">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+
+    <!-- الهيدر -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1 style="font-family: 'Courier New', monospace; font-size: 1.8rem; font-weight: bold; color: #ffffff; margin-bottom: 0.2rem; text-shadow: 2px 2px 0px #ff0000, 4px 4px 0px #00ff00, 6px 6px 0px #0000ff, 8px 8px 0px rgba(255, 255, 0, 0.8), 10px 10px 0px rgba(255, 0, 255, 0.6), 12px 12px 0px rgba(0, 255, 255, 0.4); animation: pixelGlow 2s ease-in-out infinite alternate; letter-spacing: 2px; position: relative;">Tech Gang Hub</h1>
+                <span>By Mohamed Magdy</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="index.html#videos">الفيديوهات</a></li>
+                    <li><a href="index.html#about">حول</a></li>
+                    <li><a href="https://www.youtube.com/@iossteps" target="_blank">قناة اليوتيوب</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="video-content">
+        <div class="container">
+            <div class="back-button">
+                <a href="index.html" class="btn btn-back">← العودة للرئيسية</a>
+            </div>
+            <div class="download-container">
+                <h1 id="download-title">روابط التحميل</h1>
+                <div class="download-list" id="download-links-container">
+                    <!-- Download links will be injected here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>محمد مجدي</h3>
+                    <p>خبير التطبيقات والخدمات المجانية</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط مهمة</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/@iossteps" target="_blank">قناة اليوتيوب</a></li>
+                        <li><a href="https://t.me/mmsteps" target="_blank">تليجرام</a></li>
+                        <li><a href="privacy-policy.html">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <p>للاستفسارات والتعاون</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mohamed Magdy - جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const videoId = urlParams.get("video");
+            const downloadTitle = document.getElementById("download-title");
+            const downloadLinksContainer = document.getElementById("download-links-container");
+
+            let links = {};
+
+            // Define download links for each video
+            switch(videoId) {
+                case "video6":
+                    downloadTitle.innerText = "روابط تحميل فيديو: تشغيل جميع العاب البلاي استيشن علي الايفون";
+                    links = [
+                        {
+                            name: "App For iPhone",
+                            description: "تطبيق لتشغيل ألعاب البلاي ستيشن على الايفون",
+                            url: "https://www.mediafire.com/file/iuhyhz0kq09p26n/乐享快游-1.5.4.ipa/file"
+                        },
+                        {
+                            name: "شرح تثبيت التطبيق للايفون",
+                            description: "فيديو يشرح كيفية تثبيت التطبيق على الايفون",
+                            url: "https://apgy.in/yt/AYon_A_S26k"
+                        },
+                        {
+                            name: "App for Android",
+                            description: "تطبيق لتشغيل ألعاب البلاي ستيشن على الأندرويد",
+                            url: "https://www.mediafire.com/file/6661o7tqsurg7qp/Morocket.apk/file"
+                        },
+                        {
+                            name: "ID-Game",
+                            description: "ملف ID-Game",
+                            url: "https://www.mediafire.com/file/5anawygoczxkj6i/ID-Game.xls/file"
+                        }
+                    ];
+                    break;
+                // Add cases for other videos here
+                case "video1":
+                    downloadTitle.innerText = "روابط تحميل فيديو: اختصار لتحويل الصور الي PDF بدون برامج";
+                    links = [
+                        {
+                            name: "اختصار تحويل الصور إلى PDF",
+                            description: "رابط الاختصار لتحويل الصور إلى PDF",
+                            url: "#"
+                        }
+                    ];
+                    break;
+                case "video2":
+                    downloadTitle.innerText = "روابط تحميل فيديو: تفعيل ميزه الذكاء الاصطناعي في الانستقرام";
+                    links = [
+                        {
+                            name: "رابط تطبيق انستقرام",
+                            description: "رابط تحميل تطبيق انستقرام",
+                            url: "#"
+                        }
+                    ];
+                    break;
+                case "video3":
+                    downloadTitle.innerText = "روابط تحميل فيديو: اضافة ChatGPT في تطبيق Whatsspp";
+                    links = [
+                        {
+                            name: "رابط دمج ChatGPT في واتساب",
+                            description: "رابط الشرح أو الأداة لدمج ChatGPT في واتساب",
+                            url: "#"
+                        }
+                    ];
+                    break;
+                case "video4":
+                    downloadTitle.innerText = "روابط تحميل فيديو: فتح مميزات تطبيق lightroom لاخر إصدار";
+                    links = [
+                        {
+                            name: "تحميل تطبيق Lightroom",
+                            description: "رابط مباشر من App Store",
+                            url: "https://apps.apple.com/app/id878783582"
+                        },
+                        {
+                            name: "تحميل سكربت فتح المميزات",
+                            description: "ملف السكربت لفتح المميزات",
+                            url: "https://bit.ly/41MxSXB"
+                        },
+                        {
+                            name: "تحميل تطبيق شادو روكيت",
+                            description: "لتثبيت ملف السكربت",
+                            url: "https://apps.apple.com/app/id932747118"
+                        },
+                        {
+                            name: "شرح تثبيت السكربت",
+                            description: "فيديو شرح مفصل",
+                            url: "https://tools.apgy.in/v/DHpt_0vPeLI"
+                        }
+                    ];
+                    break;
+                case "video5":
+                    downloadTitle.innerText = "روابط تحميل فيديو: إضافه فيديو كخلفيه Wallpaper للايفون";
+                    links = [
+                        {
+                            name: "رابط الفيديو",
+                            description: "شرح إضافة فيديو كخلفية",
+                            url: "https://tools.apgy.in/c/UCUcEp4dHmK9reGbHb7ZtT4A"
+                        },
+                        {
+                            name: "رابط التطبيق",
+                            description: "التطبيق المستخدم في الشرح",
+                            url: "https://bit.ly/3E1Xerj"
+                        },
+                        {
+                            name: "تحميل الخلفيات",
+                            description: "مجموعة خلفيات جاهزة",
+                            url: "https://bit.ly/4jteFQp"
+                        }
+                    ];
+                    break;
+                default:
+                    downloadTitle.innerText = "لا توجد روابط تحميل لهذا الفيديو.";
+                    links = [];
+                    break;
+            }
+
+            if (links.length > 0) {
+                links.forEach(link => {
+                    const downloadItem = document.createElement("div");
+                    downloadItem.classList.add("download-item");
+                    downloadItem.innerHTML = `
+                        <div class="icon">&#x2B07;</div>
+                        <div class="info">
+                            <h3>${link.name}</h3>
+                            <p>${link.description}</p>
+                        </div>
+                        <a href="${link.url}" class="download-button" target="_blank">
+                            <span>تحميل</span>
+                        </a>
+                    `;
+                    downloadLinksContainer.appendChild(downloadItem);
+                });
+            } else {
+                downloadLinksContainer.innerHTML = `<p style="color: #e0e0e0;">عذراً، لا توجد روابط تحميل متوفرة لهذا الفيديو حالياً.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
+
+
